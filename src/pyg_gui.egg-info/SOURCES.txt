@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/gui_elements/__init__.py
+src/gui_elements/test.py
+src/pyg_gui.egg-info/PKG-INFO
+src/pyg_gui.egg-info/SOURCES.txt
+src/pyg_gui.egg-info/dependency_links.txt
+src/pyg_gui.egg-info/top_level.txt
