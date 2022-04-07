@@ -1,43 +1,30 @@
 import time
-
 import pygame,sys
-from src.pyg_gui.gui_elements.button import Button
-
-
-def test(atr):
-    print(atr[0])
-
-def k(atr):
-    print(atr[0])
-
+from src.pyg_gui.helper_files.text_class import Text
 
 
 pygame.init()
 window = pygame.display.set_mode((1000,800))
-button = Button(window,(10,300),(400,36),(130,44,111),listeners=[test,k],listener_atributes=[("1"),("2")])
 
-buttons = [button]
-def update_non_event_fcs(buttons):
-    for i in buttons:
-        i.non_event_update()
+font = pygame.font.SysFont("arial",30)
+font_render = font.render("test",True,(0,0,0))
+text_obj = Text((100,100), font_render.get_size(),font_render, "auto_XY")
 
+text_pos = text_obj.caclulate_pos()
 
-def update_event_fcs(buttons,e):
-    for i in buttons:
-        i.event_update(e)
-
-
-
+test_sur = pygame.Surface((100,100))
+test_sur.fill((30,255,10))
 
 while True:
     for e in pygame.event.get():
-        update_event_fcs(buttons,e)
+
         if e.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-    update_non_event_fcs(buttons)
 
+    window.blit(test_sur,(20,20))
+    test_sur.blit(font_render, (text_pos))
     pygame.display.flip()
     pygame.display.update()
     time.sleep(1 / 60)
