@@ -1,31 +1,39 @@
 import time
 import pygame,sys
 from src.pyg_gui.helper_files.text_class import Text
+from src.pyg_gui.gui_elements.button import Button
+
+def move_left(arg):
+    button.size[1] += arg[0]
+def move_Y(arg):
+    button.size[0] += arg[0]
+
+
 
 
 pygame.init()
 window = pygame.display.set_mode((1000,800))
 
-font = pygame.font.SysFont("arial",30)
-font_render = font.render("test",True,(0,0,0))
-text_obj = Text((100,100), font_render.get_size(),font_render, "auto_XY")
+font = pygame.font.SysFont("ariel",30)
+font_renderer = font.render("move_left", True, (100,100,100))
 
-text_pos = text_obj.caclulate_pos()
 
-test_sur = pygame.Surface((100,100))
-test_sur.fill((30,255,10))
+text_object = Text(font_renderer)
+button = Button(window, [0,0], [200,70], (42,111,55), text_object,[move_left,move_Y],[[1,3],[1],[6]])
+
+
 
 while True:
     for e in pygame.event.get():
-
+        button.event_update(e)
         if e.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
+    button.non_event_update()
 
-    window.blit(test_sur,(20,20))
-    test_sur.blit(font_render, (text_pos))
     pygame.display.flip()
     pygame.display.update()
+    window.fill((0,0,0))
     time.sleep(1 / 60)
 
