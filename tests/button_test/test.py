@@ -1,34 +1,42 @@
 import math
 import time
-import pygame,sys
+import pygame,sys,random
 
 
-#from src.pyg_gui.gui_elements.text_out import Txt_out
-#from src.pyg_gui.helper_files.text_class import Text
-
-
+from src.pyg_gui.gui_elements.text_in import Txt_in
+from src.pyg_gui.gui_elements.button import Button
+from src.pyg_gui.gui_elements.text_out import Txt_out
+from src.pyg_gui.helper_files.text_class import Text
 
 pygame.init()
+text_obj = Text(30, "Asd,basd",(0,0,0))
+
+def submit_ev(arg):
+    outTxt.txt_obj.txt = inTxt.txt_obj.txt
+
 window = pygame.display.set_mode((1000,800))
 
 
-font = pygame.font.SysFont("ariel", 30)
-fRenderer = font.render(f"Your score is about: {math.floor(131 - 10 / 3)}!", Text, (0,0,0))
-txt_obj = Text(fRenderer)
+objTxt_in = Text(30, "txt", (0,0,0))
+objTxt_out = Text(30, "", (0,0,0))
+objSub = Text(30, "submit", (0,0,0))
 
-score_output = Txt_out(window, (100,80), (81, 35), (0,100,150), txt_obj)
-
-
+inTxt = Txt_in(window, [280,200], (400,50),(100,120,200),objTxt_in)
+outTxt = Txt_out(window, [280,400], (300,50),(100,120,200),objTxt_out)
+submit = Button(window, [280,600], (300,50),(100,120,200),objSub,[submit_ev],[()])
 while True:
     for e in pygame.event.get():
-        score_output.event_update(e)
+        inTxt.event_update(e)
+        outTxt.event_update(e)
+        submit.event_update(e)
+
         if e.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-
-
-    score_output.non_event_update()
+    submit.non_event_update()
+    inTxt.non_event_update()
+    outTxt.non_event_update()
     pygame.display.flip()
     pygame.display.update()
 

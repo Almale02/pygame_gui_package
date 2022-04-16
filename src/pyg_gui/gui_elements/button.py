@@ -44,11 +44,16 @@ class Button:
 
     def render_txt(self):
         if self.txt_obj.pos == "auto_XY":
-            self.surface.blit(self.txt_obj.renderer, (self.txt_obj.calculate_pos()))
+
+            self.surface.blit(self.txt_obj.get_renderer(), (self.txt_obj.calculate_pos()))
+
         elif self.txt_obj.pos == "auto_X":
-            self.surface.blit(self.txt_obj.renderer, (self.txt_obj.calculate_pos(), 0))
+
+            self.surface.blit(self.txt_obj.get_renderer(), (self.txt_obj.calculate_pos(), 0))
+
         elif self.txt_obj.pos == "auto_Y":
-            self.surface.blit(self.txt_obj.renderer, (0, self.txt_obj.calculate_pos()))
+
+            self.surface.blit(self.txt_obj.get_renderer(), (0, self.txt_obj.calculate_pos()))
 
 
 
