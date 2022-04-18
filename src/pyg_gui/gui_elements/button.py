@@ -24,8 +24,8 @@ class Button:
         self.window.blit(self.surface,self.pos)
 
     def check_press(self,e):
-        if pygame.MOUSEBUTTONDOWN:
-            if pygame.mouse.get_pressed()[0]:
+        if e.type == pygame.MOUSEBUTTONDOWN:
+            if e.button == 1:
                 if self.rect.collidepoint(pygame.mouse.get_pos()):
                     for i_funcs,funcs in enumerate(self.listeners):
 
@@ -54,6 +54,8 @@ class Button:
         elif self.txt_obj.pos == "auto_Y":
 
             self.surface.blit(self.txt_obj.get_renderer(), (0, self.txt_obj.calculate_pos()))
+
+
 
 
 
