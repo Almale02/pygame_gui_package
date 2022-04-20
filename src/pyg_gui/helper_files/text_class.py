@@ -19,7 +19,7 @@ class Text:
     def calculate_pos(self):
         if self.pos == "auto_XY":
             self.size_txt = self.font_renderer.get_size()
-            return (self.size_obj[0] // 2 - self.size_txt[0] // 2, self.size_obj[1] // 2 - self.size_txt[1] // 2 )
+            return (self.size_obj[0] // 2 - self.size_txt[0] // 2, self.size_obj[1] // 2  - self.size_txt[1] // 2 )
 
         if self.pos == "auto_X":
             return self.size_obj[0] // 2 - self.size_txt[0] // 2
